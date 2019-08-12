@@ -17,5 +17,32 @@ var numbersArray = [11,24,45,44,59,43,88,93,58,11,13,14,15,190]
 var stringsArray = ["I", "Love", "DevMountain"]
 var blackDiamondDictionary = ["Mama" : "too cold", "Papa" : "too hot", "Baby" : "just right"]
 
+//Couldn't get map to work, learned it returns a new array of the SAME size as the one mapped over. Need to use filter
+//func threeFilter() -> [Int] {
+//    let numArray = numbersArray.map({ (num) -> Int in
+//        if num % 3 == 0 {
+//            return num
+//        }
+//
+//    })
+//    return numArray
+//}
+
+func showMaxNum(numArray: [Int]) -> Int {
+    let maxNum = numArray.reduce(0, { result, next in
+        result > next ? result : next
+    })
+    return maxNum
+}
+
+func joinStrings(stringArray: [String]) -> String {
+    // the reason this does not print "ILove DevMountain" is because $0 is the result of { $0 + $ 1 + " " }, so the FIRST time it's run, $0 is nothing, because there's no result as it's the first time it's being run. Once it's run, $0 has a value, being the result of { $0 + $ 1 + " " }, which in this case is "I "
+    let newString = stringArray.reduce(""){ $0 + $1 + " " }
+    return newString
+}
+
+//print(threeFilter)
+print(showMaxNum(numArray: numbersArray))
+print(joinStrings(stringArray: stringsArray))
 
 //: [Next](@next)
